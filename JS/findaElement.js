@@ -29,3 +29,8 @@ console.log(nameExist("anmolScientific", users))
 
 let rresult = [...Array(60).keys()].map(el => el + 1)
 console.log(rresult)
+function range(start, end) {
+    return [...Array(end).keys()].map((el) => el + start)
+    
+}
+console.log(range(1,30))
