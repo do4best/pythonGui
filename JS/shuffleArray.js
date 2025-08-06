@@ -13,14 +13,13 @@
 
 // console.log(shuffleArray(arr))
 let arr = [5, 4, 1, 2, 3,3,1,1]
-function findMatch(arr, ele) {
-    let bucket=[]
-    for (let i = 0; i < arr.length; i++){
-        if (arr[i]=== ele) {
-            bucket.push(i)
+function findMatch(arr, ele,compare=(a,b)=>a === b) {
+    let bucket = []
+    arr.forEach((item, idx) => {
+        if (compare(item, ele)) {
+            bucket.push({item:idx,value:item})
         }
-       
-    }
+    })
     return bucket;
     
 }
