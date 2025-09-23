@@ -1,24 +1,16 @@
-class Stack{
+export class Stack{
     constructor() {
         this.maxSize = 100;
-        this.stack = []
         this.top = -1
-        
-    }
-    push(value) {
+        this.stack = []
+     }
+    push(item) { 
         if (this.isFull()) {
             return false;
         }
-      
         this.top++;
-        this.stack[this.top] = value;
+        this.stack[this.top] = item;
         return true;
-    }
-    isFull() {
-        return this.top === this.maxSize - 1;
-    }
-    isEmpty() {
-        return this.top === -1
     }
     pop() {
         if (this.isEmpty()) {
@@ -26,13 +18,52 @@ class Stack{
         }
         this.top--;
         return this.stack.pop()
+     }
+    isEmpty() {
+        return this.top === -1
+     }
+    isFull() {
+        return this.top === this.maxSize - 1;
+     }
+    peep() {
+        if (this.isEmpty()) {
+            return null
+        }
+        return this.stack[this.top]
+        
     }
 }
-let stack = new Stack();
-
-stack.push(1)
-stack.push(2)
-stack.push(3)
-stack.push(4)
-stack.pop()
-console.log(stack)
+export class Enque{
+    constructor() { 
+        this.head = 0;
+        this.tail = 0;
+        this.maxSize = 100;
+        this.queue=[]
+    }
+    enque(value) { 
+        if (this.isFull()) {
+            return false
+        }
+        this.queue[this.tail] = value;
+        this.tail++
+        return true;
+    }
+    deque() {
+        const item = this.enque[this.head]
+        this.head++;
+        return item;
+    }
+    peep() {
+        return this.queue[this.head]
+    }
+    isEmpty() {
+        return this.getLength() === 0;
+     }
+    isFull() { 
+        return this.getLength() === this.maxSize;
+    }
+    getLength() {
+        return this.tail - this.head;
+     }
+    
+}
